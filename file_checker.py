@@ -1,4 +1,5 @@
 
+
 import hashlib
 import os
 
@@ -15,7 +16,14 @@ def calculate_hash(file_path):
 file_path = input("Enter file path: ")
 
 if os.path.isfile(file_path):
-    result = calculate_hash(file_path)
-    print("SHA-256 Hash:", result)
+    file_name = os.path.basename(file_path)
+    file_size = os.path.getsize(file_path)
+    file_hash = calculate_hash(file_path)
+
+    print("\n--- FILE DETAILS ---")
+    print("File Name:", file_name)
+    print("File Size:", file_size, "bytes")
+    print("SHA-256 Hash:", file_hash)
+
 else:
     print("File not found!")
